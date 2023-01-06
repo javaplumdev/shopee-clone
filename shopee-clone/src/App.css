@@ -1,0 +1,53 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: rgb(245, 245, 245);
+}
+
+.logo {
+	max-width: 175px;
+	filter: brightness(1000%);
+}
+
+.icons {
+	color: #fff;
+}
+
+.carousel {
+	max-width: 600px;
+}
+
+.carousel-image {
+	object-fit: cover;
+}
+
+.hero-image {
+	max-width: 100%;
+	height: 225px;
+}
+
+.swiper {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-slide {
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
