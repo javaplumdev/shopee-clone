@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ContextVar } from '../context/context';
 
 const Discover = () => {
 	const { dailyDiscover } = useContext(ContextVar);
-
-	console.log(dailyDiscover);
 
 	return (
 		<div className="container mx-auto mt-5  p-3">
@@ -17,16 +16,25 @@ const Discover = () => {
 			<div className="grid grid-cols-6 gap-3">
 				{dailyDiscover.slice(0, 50).map((item) => {
 					return (
-						<div key={item.id} className="bg-white shadow">
-							{item.images.slice(1, 2).map((img) => {
-								return <img src={img} alt={item.name} className="product" />;
-							})}
-							<div className="p-2">
-								<small>{item.title}</small>
+						<Link key={item.id} to={`/product/${item.id}/${item.title}`}>
+							<div key={item.id} className="bg-white shadow">
+								{item.images.slice(1, 2).map((img) => {
+									return (
+										<img
+											key={item.id}
+											src={img}
+											alt={item.name}
+											className="product"
+										/>
+									);
+								})}
+								<div className="p-2">
+									<small>{item.title}</small>
 
-								<p className="text-mainColor font-bold mt-5">₱{item.price}</p>
+									<p className="text-mainColor font-bold mt-5">₱{item.price}</p>
+								</div>
 							</div>
-						</div>
+						</Link>
 					);
 				})}
 			</div>

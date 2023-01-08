@@ -7,15 +7,36 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Categories from './components/Categories';
 import Discover from './components/Discover';
+import Product from './components/Product';
+
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 	return (
 		<ContextProvider>
 			<div className="App">
-				<Navbar />
-				<Hero />
-				<Categories />
-				<Discover />
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<>
+								<Navbar />
+								<Hero />
+								<Categories />
+								<Discover />
+							</>
+						}
+					/>
+					<Route
+						path="/product/:id/:title"
+						element={
+							<>
+								<Navbar />
+								<Product />
+							</>
+						}
+					/>
+				</Routes>
 			</div>
 		</ContextProvider>
 	);
