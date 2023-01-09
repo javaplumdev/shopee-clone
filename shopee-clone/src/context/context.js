@@ -27,8 +27,12 @@ const ContextProvider = (props) => {
 			});
 	}, []);
 
+	const mouseHovered = (img) => {
+		console.log(img);
+	};
+
 	return (
-		<ContextVar.Provider value={{ categories, dailyDiscover }}>
+		<ContextVar.Provider value={{ categories, dailyDiscover, mouseHovered }}>
 			{props.children}
 		</ContextVar.Provider>
 	);

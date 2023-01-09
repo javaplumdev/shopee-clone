@@ -5,11 +5,9 @@ import { BsStarFill, BsStarHalf } from 'react-icons/bs';
 
 const Product = () => {
 	const { id } = useParams();
-	const { dailyDiscover } = useContext(ContextVar);
+	const { dailyDiscover, mouseHovered } = useContext(ContextVar);
 
 	const filter = dailyDiscover.filter((item) => item.id === +id);
-
-	console.log(filter);
 
 	return (
 		<div className="container mx-auto bg-red-700 mt-3">
@@ -23,7 +21,7 @@ const Product = () => {
 										key={item.id}
 										src={img}
 										alt={item.name}
-										className="mr-8 	"
+										className="image-holder mr-8"
 										style={{
 											maxWidth: '350px',
 											height: '450px',
@@ -52,6 +50,55 @@ const Product = () => {
 							<p className="text-mainColor font-bold text-3xl mt-2 bg-gray-50 p-3">
 								₱{item.price}
 							</p>
+							<div className="grid grid-cols-8 mt-5">
+								<p className="mr-3 text-gray-500">Type</p>
+								<div className="flex col-span-7">
+									{item.images.map((img) => {
+										return (
+											<img
+												src={img}
+												alt={item.name}
+												className="mr-3"
+												style={{
+													maxWidth: '100px',
+													height: '100px',
+													objectFit: 'cover',
+												}}
+												onMouseEnter={() => mouseHovered(img)}
+											/>
+										);
+									})}
+								</div>
+							</div>
+							<div className="grid grid-cols-8 mt-5">
+								<p className="mr-3 text-gray-500">Quantity</p>
+								<div className="flex col-span-2">
+									<button
+										className="border px-2 border-gray-200 text-gray-400 font-bold text-2xl
+"
+									>
+										-
+									</button>
+									<p
+										className="border px-5 border-gray-200 text-lg
+"
+									>
+										0
+									</p>
+									<button
+										className="border px-2 border-gray-200 text-gray-400 font-bold text-2xl
+"
+									>
+										+
+									</button>
+								</div>
+							</div>
+							<div className="flex mt-8">
+								<button className="mr-3 border-mainColor border p-3 text-mainColor bg-orange-100">
+									Add To Cart
+								</button>
+								<button className="bg-mainColor p-3 text-white">Buy Now</button>
+							</div>
 						</div>
 					</div>
 				);
